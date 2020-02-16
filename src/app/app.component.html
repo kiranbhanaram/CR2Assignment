@@ -1,0 +1,66 @@
+
+
+<!-- <p-dialog header="Error" [(visible)]="showErrorDialogue">
+  Error occured, please try later
+</p-dialog> -->
+<div class="container">
+  <h1 class="text-center">
+      <span >Search top 5 Repository</span>
+  </h1>
+  <ngx-spinner></ngx-spinner>
+
+
+<div class="panel  panel-default">
+  <div class="panel-heading">
+
+      <p class="form-inline">
+          <span>
+              <h4>Repos <span class="badge">{{repoData.length}}</span>
+              <input [(ngModel)]='searchText'   class="form-control input-sm">
+              <button  class="searchBtn" type="button" (click)="handleSearch()" >Search</button>
+              <span>{{averageScore}}</span>
+              </h4>
+          </span>
+        </p>
+
+  </div>
+  <div class="panel-body">
+      <div class="list-group">
+          <div *ngFor="let repo of repoData" class="list-group-item ">
+              <div class="row">
+                  <div class="col-md-8">
+                      <h4>
+                          <small>
+                              <span ng-if="repo.fork" class="octicon octicon-repo-forked"></span>
+                              <span ng-if="!repo.fork" class="octicon octicon-repo"></span>
+                          </small>
+                          <a href="{{repo.html_url}}" target="_blank" >
+                              {{repo.name}}
+                          </a>
+                          <small>{{repo.description}}</small>
+                      </h4>
+
+                      <small>
+                          <a href="{{repo.homepage}}" class="">
+                              <i class="fa fa-link"></i> WebPage
+                          </a>
+                      </small>
+                  </div>
+                  <div class="col-md-4">
+                      <dl class="dl-horizontal">
+                        <dt>Last Updated:</dt>
+                        <dd>{{repo.updated_at | date:'medium' }}</dd>
+                        <dt>Created:</dt>
+                        <dd>{{repo.created_at| date:'medium'}}</dd>
+                      </dl>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+
+</div>
+<router-outlet></router-outlet>
